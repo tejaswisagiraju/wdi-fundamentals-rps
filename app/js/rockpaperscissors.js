@@ -7,6 +7,7 @@ function getInput() {
     console.log("Please choose either 'rock', 'paper', or 'scissors'.")
     return prompt();
 }
+
 function randomPlay() {
     var randomNumber = Math.random();
     if (randomNumber < 0.33) {
@@ -38,35 +39,31 @@ function getComputerMove(move) {
 function getWinner(playerMove,computerMove) {
     var winner;
     
-    if (playerMove === 'rock') {
+    if(playerMove === 'rock') {
         if (computerMove === 'paper'){
-            winner = "computer"
+            winner = "computer";
         } else if (computerMove === 'scissors') {
-            winner = "player"
+            winner = "player";
         } else if (computerMove === 'rock')
-            winner = "tie"
+            winner = "tie";
         }
         
-    }
-    
-    if (playerMove === 'paper') {
+    } else if(playerMove === 'paper') {
         if (computerMove === 'paper'){
-            winner = "tie"
+            winner = "tie";
         } else if (computerMove === 'scissors') {
-            winner = "computer"
+            winner = "computer";
         } else if (computerMove === 'rock')
-            winner = "player"
+            winner = "player";
         }
         
-    }
-    
-    if (playerMove === 'scissors') {
+    } else if(playerMove === 'scissors') {
         if (computerMove === 'paper'){
-            winner = "player"
+            winner = "player";
         } else if (computerMove === 'scissors') {
-            winner = "tie"
+            winner = "tie";
         } else if (computerMove === 'rock')
-            winner = "computer"
+            winner = "computer";
         }
         
     }
@@ -81,8 +78,17 @@ function playToFive() {
     console.log("Let's play Rock, Paper, Scissors");
     var playerWins = 0;
     var computerWins = 0;
+    var getWinner;
+    
+    while (playerWins < 5 && computerWins < 5) {
+        getWinner = getWinner(getPlayerMove(),getComputerMove());
+        if (getWinner === "player") {
+            playerWins += playerWins;
+        } else if (getWinner === "computer") {
+            computerWins += computerWins;
+        } 
+    }
     // Write code that plays 'Rock, Paper, Scissors' until either the player or the computer has won five times.
     /* YOUR CODE HERE */
     return [playerWins, computerWins];
 }
-
